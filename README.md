@@ -1,13 +1,14 @@
 # MirrorExtensions
 
-![](https://img.shields.io/badge/Language-Swift%204-F04C3E.svg) [![](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://github.com/dennisvennink/SequenceExtensions/blob/master/LICENSE.md)
+![Requires Swift > 4](https://img.shields.io/badge/Language-Swift%204-F04C3E.svg) ![Licensed under the MIT license](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
-_MirrorExtensions_ is a library that adds various extensions to the [`Mirror`](https://developer.apple.com/documentation/swift/mirror) protocol. It should integrate well without adding any ambiguities and is well-documented and tested.
+_MirrorExtensions_ is a library that adds various missing operations related to `Mirror`s.
 
-## Table of Contents
+## Table Of Contents
 
 - [Installation](#installation)
     - [Swift Package Manager](#swift-package-manager)
+- [Contributing](#contributing)
 - [Testing](#testing)
 - [API](#api)
     - [Method Extensions on `Mirror`](#method-extensions-on-mirror)
@@ -17,16 +18,25 @@ _MirrorExtensions_ is a library that adds various extensions to the [`Mirror`](h
 
 ### Swift Package Manager
 
-To install this package, add it to your project's `Package.swift` as a dependency:
-
-```swift
-.package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "0.1.0")
-```
-
-Don't forget to specify the tools version at the top:
+To install this package, add it as a dependency to your project's manifest file (`Package.swift`), e.g., a package named `"Example"` whose main product is a library with no dependencies other than MirrorExtensions would be defined as such:
 
 ```swift
 // swift-tools-version:4.0
+import PackageDescription
+
+let package = Package(
+  name: "Example",
+  products: [
+    .library(name: "Example", targets: ["Example"])
+  ],
+  dependencies: [
+    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "0.1.1")
+  ],
+  targets: [
+    .target(name: "Example", dependencies: ["MirrorExtensions"]),
+    .testTarget(name: "ExampleTests", dependencies: ["Example"])
+  ]
+)
 ```
 
 Then, `import` it into your project:
@@ -35,11 +45,33 @@ Then, `import` it into your project:
 import MirrorExtensions
 ```
 
+## Contributing
+
+To contribute, think of a missing feature or issue to work on, then fork the project and create your feature branch:
+
+```shell
+git checkout -b my-new-feature
+```
+
+When you're done implementing your feature, commit your changes:
+
+```shell
+git commit -am "Add some new feature"
+```
+
+Then push to the feature branch:
+
+```shell
+git push origin my-new-feature
+```
+
+Finally, submit a pull request!
+
 ## Testing
 
-To perform the tests, run:
+All tests are written in [_XCTest_](https://developer.apple.com/documentation/xctest). To perform them, run:
 
-```
+```shell
 swift test
 ```
 
@@ -49,7 +81,7 @@ swift test
 
 #### `children()`
 
-Creates a `Collection` of elements that contains all of the children of `self` that conform to `T`.
+Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
 
 ##### Example
 
@@ -80,4 +112,4 @@ None.
 
 ##### Returns
 
-A `Collection` of elements that contains all of the children of `self` that conform to `T`.
+A `Collection` that contains, as elements, all of the children of `self` that conform to `T`.

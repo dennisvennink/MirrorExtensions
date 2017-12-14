@@ -1,5 +1,5 @@
 extension Mirror {
-  /// Creates a `Collection` of elements that contains all of the children of `self` that conform to `T`.
+  /// Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
   ///
   ///     struct Struct {
   ///       let boolean1 = true
@@ -14,7 +14,7 @@ extension Mirror {
   ///     print(Mirror(reflecting: Struct()).children() as [Int])
   ///     // [1, 2, 3]
   ///
-  /// - Returns: A `Collection` of elements that contains all of the children of `self` that conform to `T`.
+  /// - Returns: A `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
   func children <T> () -> [T] {
     return self
       .children

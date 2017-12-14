@@ -2,7 +2,7 @@
 
 ![Requires Swift > 4](https://img.shields.io/badge/Language-Swift%204-F04C3E.svg) ![Licensed under the MIT license](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
-_MirrorExtensions_ is a library that adds various missing operations related to `Mirror`s.
+_MirrorExtensions_ is a library that adds various `Mirror`-related operations.
 
 ## Table Of Contents
 
@@ -11,7 +11,7 @@ _MirrorExtensions_ is a library that adds various missing operations related to 
 - [Contributing](#contributing)
 - [Testing](#testing)
 - [API](#api)
-    - [Method Extensions on `Mirror`](#method-extensions-on-mirror)
+    - [Instance Method Extensions On `Mirror`](#instance-method-extensions-on-mirror)
         - [`children()`](#children)
 
 ## Installation
@@ -77,7 +77,7 @@ swift test
 
 ## API
 
-### Method Extensions on `Mirror`
+### Instance Method Extensions On `Mirror`
 
 #### `children()`
 

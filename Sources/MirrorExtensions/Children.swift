@@ -16,17 +16,6 @@ extension Mirror {
   ///
   /// - Returns: A `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
   func children <T> () -> [T] {
-    return self
-      .children
-      .filter { child in
-        if child.value as? T != nil {
-          return true
-        }
-
-        return false
-      }
-      .map { child in
-        return child.value as! T
-      }
+    return self.children.filter { $0.value as? T != nil }.map { $0.value as! T }
   }
 }

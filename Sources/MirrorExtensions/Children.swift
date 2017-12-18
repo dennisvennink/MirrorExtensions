@@ -1,4 +1,4 @@
-extension Mirror {
+public extension Mirror {
   /// Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
   ///
   ///     struct Struct {

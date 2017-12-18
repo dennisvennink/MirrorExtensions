@@ -30,7 +30,7 @@ let package = Package(
     .library(name: "Example", targets: ["Example"])
   ],
   dependencies: [
-    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "0.1.1")
+    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "0.1.2")
   ],
   targets: [
     .target(name: "Example", dependencies: ["MirrorExtensions"]),

@@ -4,18 +4,20 @@ import XCTest
 class MirrorTests: XCTestCase {
   func testShouldReturnValidResults () {
     struct Struct {
-      let string1 = "a"
       let integer1 = 1
       let boolean1 = true
-      let string2 = "b"
+      let string1 = "a"
       let integer2 = 2
       let boolean2 = false
-      let string3 = "c"
+      let string2 = "b"
+      let integer3 = 3
     }
 
-    XCTAssertEqual((Mirror(reflecting: Struct()).children() as [String]).count, 3)
-    XCTAssertEqual((Mirror(reflecting: Struct()).children() as [Int]).count, 2)
-    XCTAssertEqual((Mirror(reflecting: Struct()).children() as [Bool]).count, 2)
-    XCTAssertEqual((Mirror(reflecting: Struct()).children() as [Float]).count, 0)
+    let mirror = Mirror(reflecting: Struct())
+
+    XCTAssertEqual(mirror.children(String.self).count, 2)
+    XCTAssertEqual(mirror.children(Int.self).count, 3)
+    XCTAssertEqual(mirror.children(Bool.self).count, 2)
+    XCTAssertEqual(mirror.children(Float.self).count, 0)
   }
 }

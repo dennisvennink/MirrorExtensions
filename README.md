@@ -12,7 +12,7 @@ _MirrorExtensions_ is a library that adds various `Mirror`-related operations.
 - [Testing](#testing)
 - [API](#api)
     - [Instance Method Extensions On `Mirror`](#instance-method-extensions-on-mirror)
-        - [`children()`](#children)
+        - [`children(_ type:)`](#children)
 
 ## Installation
 
@@ -30,7 +30,7 @@ let package = Package(
     .library(name: "Example", targets: ["Example"])
   ],
   dependencies: [
-    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "0.1.2")
+    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "1.0.0")
   ],
   targets: [
     .target(name: "Example", dependencies: ["MirrorExtensions"]),
@@ -96,14 +96,14 @@ struct Struct {
   let integer3 = 3
 }
 
-print(Mirror(reflecting: Struct()).children() as [Int])
+print(Mirror(reflecting: Struct()).children(Int.self))
 // [1, 2, 3]
 ```
 
 ##### Declaration
 
 ```swift
-func children <T> () -> [T]
+func children <T> (_ type: T.Type) -> [T]
 ```
 
 ##### Parameters

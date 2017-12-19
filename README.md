@@ -12,7 +12,7 @@ _MirrorExtensions_ is a library that adds various `Mirror`-related operations.
 - [Testing](#testing)
 - [API](#api)
     - [Instance Method Extensions On `Mirror`](#instance-method-extensions-on-mirror)
-        - [`children(_ type:)`](#children)
+        - [`children(_ type:)`](#children_-type)
 
 ## Installation
 
@@ -30,7 +30,7 @@ let package = Package(
     .library(name: "Example", targets: ["Example"])
   ],
   dependencies: [
-    .package(url: "https://github.com/dennisvennink/MirrorExtensions", from: "1.0.0")
+    .package(url: "https://github.com/dennisvennink/MirrorExtensions.git", from: "1.0.0")
   ],
   targets: [
     .target(name: "Example", dependencies: ["MirrorExtensions"]),
@@ -79,7 +79,7 @@ swift test
 
 ### Instance Method Extensions On `Mirror`
 
-#### `children()`
+#### `children(_ type:)`
 
 Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
 

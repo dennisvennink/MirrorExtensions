@@ -81,7 +81,7 @@ swift test
 
 #### `children(_ type:)`
 
-Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
+Creates an `Array` that contains, as elements, all of the children of `self` that conform to `T`.
 
 ##### Example
 
@@ -112,4 +112,4 @@ None.
 
 ##### Returns
 
-A `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
+An `Array` that contains, as elements, all of the children of `self` that conform to `T`.

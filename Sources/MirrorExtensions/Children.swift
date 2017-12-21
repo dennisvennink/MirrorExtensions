@@ -1,5 +1,5 @@
 public extension Mirror {
-  /// Creates a `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
+  /// Creates an `Array` that contains, as elements, all of the children of `self` that conform to `T`.
   ///
   ///     struct Struct {
   ///       let integer1 = 1
@@ -14,7 +14,7 @@ public extension Mirror {
   ///     print(Mirror(reflecting: Struct()).children(Int.self))
   ///     // [1, 2, 3]
   ///
-  /// - Returns: A `Collection` that contains, as elements, all of the children of `self` that conform to `T`.
+  /// - Returns: An `Array` that contains, as elements, all of the children of `self` that conform to `T`.
   func children <T> (_ type: T.Type) -> [T] {
     return self.children.filter { $0.value as? T != nil }.map { $0.value as! T }
   }

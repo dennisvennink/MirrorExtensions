@@ -13,6 +13,7 @@ _MirrorExtensions_ is a library that adds various `Mirror`-related operations.
 - [API](#api)
     - [Instance Method Extensions On `Mirror`](#instance-method-extensions-on-mirror)
         - [`children(_ type:)`](#children_-type)
+        - [`descendants(_ type:)`](#descendants_-type)
 
 ## Installation
 
@@ -30,7 +31,7 @@ let package = Package(
     .library(name: "Example", targets: ["Example"])
   ],
   dependencies: [
-    .package(url: "https://github.com/dennisvennink/MirrorExtensions.git", from: "1.0.1")
+    .package(url: "https://github.com/dennisvennink/MirrorExtensions.git", from: "1.1.0")
   ],
   targets: [
     .target(name: "Example", dependencies: ["MirrorExtensions"]),
@@ -81,18 +82,23 @@ swift test
 
 #### `children(_ type:)`
 
-Creates an `Array` that contains, as elements, all of the children of `self` that conform to `T`.
+#### Declaration
 
-##### Example
+```swift
+func children <T> (_ type: T.Type) -> [T]
+```
+
+#### Description
+
+Creates an `Array` containing all of the children of `self` that conform to `T`.
 
 ```swift
 struct Struct {
-  let boolean1 = true
   let integer1 = 1
+  let boolean1 = true
   let string1 = "a"
-  let boolean2 = false
   let integer2 = 2
-  let string2 = "b"
+  let boolean2 = false
   let integer3 = 3
 }
 
@@ -100,16 +106,52 @@ print(Mirror(reflecting: Struct()).children(Int.self))
 // [1, 2, 3]
 ```
 
-##### Declaration
+#### Parameters
+
+- `type`: A static metatype instance.
+
+#### Returns
+
+An `Array` containing all of the children of `self` that conform to `T`.
+
+#### `descendants(_ type:)`
+
+#### Declaration
 
 ```swift
-func children <T> (_ type: T.Type) -> [T]
+func descendants <T> (_ type: T.Type) -> [T]
 ```
 
-##### Parameters
+#### Description
 
-None.
+Creates an `Array` containing all of the descendants of `self` that conform to `T`.
 
-##### Returns
+```swift
+struct Struct2 {
+  let integer3 = 3
+}
 
-An `Array` that contains, as elements, all of the children of `self` that conform to `T`.
+struct Struct1 {
+  let integer2 = 2
+  let boolean2 = false
+  let struct2 = Struct2()
+}
+
+struct Struct {
+  let integer1 = 1
+  let boolean1 = true
+  let string1 = "a"
+  let struct1 = Struct1()
+}
+
+print(Mirror(reflecting: Struct()).descendants(Int.self))
+// [1, 2, 3]
+```
+
+#### Parameters
+
+- `type`: A static metatype instance.
+
+#### Returns
+
+An `Array` containing all of the descendants of `self` that conform to `T`.
